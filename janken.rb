@@ -5,7 +5,7 @@ def janken
   player_hand = gets.to_i
   program_hand = rand(3)
 
-  if not (player_hand == 0 || player_hand == 1 || player_hand == 2 || player_hand == 3) #無効処理
+  if player_hand != 0 && player_hand != 1 && player_hand != 2 && player_hand != 3 #無効処理
 	  puts "入力された値が無効です"
 	  puts "-----------------"
   	return true
@@ -40,32 +40,56 @@ def janken
   
   case case_pattern #あっちむいてホイ
     when "pattern1"
-  　　　puts "あっちむいて〜"
+      puts "あっちむいて〜"
   　　puts "0(上)1(下)2(左)3(右)"
-  
+  　　
   　　player_finger = gets.to_i
   　　program_face = rand(4)
-  
-  　　
-  
+
+  　　if player_finger != 0 && player_finger != 1 && player_finger != 2 && player_finger != 3
+	  　　puts "入力された値が無効です"
+  	　　return true
+  　　end
+
   　　puts "ホイ!"
   　　puts "-----------------"
-  
-  　　direction=["上","下","左","右"]
+
+      direction=["上","下","左","右"]
   　　puts "あなた:#{direction[player_finger]}, プログラム:#{direction[program_face]}"
-  
+  　　
   　　if 　player_finger == program_face
         puts "あなたの勝利"
         return false
-      else 
+      else
         return true
       end
-    
-      
-  end　#あっちむいてホイ
-  
-end #janken
 
+    when "pattern2"
+      puts "あっちむいて〜"
+  　　puts "0(上)1(下)2(左)3(右)"
+
+  　　player_face = gets.to_i
+  　　program_finger = rand(4)
+
+  　　if player_face != 0 && player_face != 1 && player_face != 2 && player_face != 3
+	  　　puts "入力された値が無効です"
+  	　　return true
+  　　end
+
+  　　puts "ホイ!"
+  　　puts "-----------------"
+
+      direction=["上","下","左","右"]
+  　　puts "あなた:#{direction[player_face]}, プログラム:#{direction[program_finger]}"
+
+  　　if player_face == program_finger
+        puts "あなたの敗北"
+        return false
+      else
+        return true
+      end
+  end#あっちむいてホイ
+end #janken
 
 next_game = true
 
